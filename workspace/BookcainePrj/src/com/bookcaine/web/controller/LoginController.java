@@ -18,10 +18,11 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//----- 한글 세팅-------
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
-		
+		//-------------------
 		HttpSession session = req.getSession();
 		
 		String id = req.getParameter("id");
@@ -36,17 +37,15 @@ public class LoginController extends HttpServlet {
 			//로그인 성공한 경우 세션에 현재 아이디 세팅
 			if(member != null){
 				session.setAttribute("loginMember", member);
-				
 				if(returnURL != null && returnURL.equals("")) {
-					resp.sendRedirect(returnURL);
+					resp.sendRedirect(returnURL); // 로그인 전 돌아가야 할 url 있을 경우 return
 					return;
 				}resp.sendRedirect("/index");
 				 return;	
-			}else if(member == null){//아이디,비번틀린경우
+			}else if(member == null){ //아이디,비번틀린경우
 				resp.sendRedirect("login?error=1");
 			}
 		} catch (Exception e) {
-			
 		}
 		
 	}
@@ -55,8 +54,6 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/view/login/login.jsp").forward(request, response);
 	}
-	
-	
 	
 	
 

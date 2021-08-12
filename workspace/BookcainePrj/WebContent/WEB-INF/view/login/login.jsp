@@ -34,7 +34,6 @@
 
         <main id="main">
             <div id="login-info-form">
-                
                 <h1 class="d-none">로그인폼</h1> 
                 <form id="loginForm" method="post" action="/login">
                     <div class="idForm">
@@ -61,7 +60,9 @@
                 <nav class="login-button">
                     <h1 class="d-none">로그인버튼</h1>
                     <input type="hidden" name="returnURL" value="${param.returnURL}" />
-                    <a class="login-button" href="javascript:void(0);"><button id="btnLogin" class="button" type="button">로그인</button></a>
+                    <a class="login-button" href="javascript:void(0);">
+                    	<button id="btnLogin" class="button" type="button">로그인</button>
+                    </a>
                 </nav>
 
                 <nav class="other-button">
